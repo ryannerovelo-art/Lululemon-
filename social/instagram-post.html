@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>lululemon — Power Moves — IG post</title>
+<style>
+  :root{
+    --white:#f7f5f2;
+    --red:#c8102e;
+    --gym:#1f4d4a; --gym-2:#0e2b29;
+    --board:#8a3b12; --board-2:#3d1a08;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{width:1080px; height:1080px; overflow:hidden; font-family:'Helvetica Neue',Arial,sans-serif;}
+  .post{position:relative; width:1080px; height:1080px; display:flex;}
+  .half{flex:1; position:relative; overflow:hidden; display:flex; align-items:flex-end; padding:44px 40px;}
+  .half.left{ background: radial-gradient(120% 140% at 20% 10%, var(--gym) 0%, var(--gym-2) 55%, #060f0e 100%); }
+  .half.right{ background: radial-gradient(120% 140% at 80% 10%, var(--board) 0%, var(--board-2) 55%, #150902 100%); }
+  .tag{color:var(--white); font-size:14px; letter-spacing:0.18em; text-transform:uppercase; opacity:0.8;}
+  .time{color:var(--white); font-size:88px; font-weight:800; line-height:0.9; margin-top:8px;}
+  .silhouette{
+    position:absolute; bottom:-4%; width:56%; aspect-ratio:2/5;
+    background-color: rgba(0,0,0,0.38);
+    clip-path: polygon(38% 0%, 62% 0%, 68% 8%, 74% 22%, 70% 40%, 82% 55%, 78% 100%, 22% 100%, 18% 55%, 30% 40%, 26% 22%, 32% 8%);
+  }
+  .left .silhouette{ left:6%; }
+  .right .silhouette{ right:6%; }
+  .center{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:88%; text-align:center; z-index:5; color:var(--white);
+  }
+  .kicker{font-size:16px; letter-spacing:0.32em; text-transform:uppercase; color:var(--red); font-weight:800; margin-bottom:22px;}
+  h1{font-size:64px; font-weight:800; line-height:1.05; letter-spacing:-0.01em; text-shadow:0 2px 30px rgba(0,0,0,0.55);}
+  .sub{margin-top:20px; font-size:24px; opacity:0.92; text-shadow:0 2px 20px rgba(0,0,0,0.55);}
+  .brandbar{
+    position:absolute; top:0; left:0; right:0; display:flex; justify-content:space-between;
+    padding:40px 44px; z-index:6; color:var(--white);
+  }
+  .logo{font-weight:800; letter-spacing:0.18em; font-size:20px; text-transform:uppercase;}
+  .campaign-tag{font-size:14px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.8;}
+</style>
+</head>
+<body>
+  <div class="post">
+    <div class="half left">
+      <div class="silhouette"></div>
+      <div><div class="tag">Training — 6:04 AM</div><div class="time">6AM</div></div>
+    </div>
+    <div class="half right">
+      <div class="silhouette"></div>
+      <div style="margin-left:auto; text-align:right;"><div class="tag">The Pitch — 9:00 AM</div><div class="time">9AM</div></div>
+    </div>
+    <div class="brandbar">
+      <div class="logo">lululemon</div>
+      <div class="campaign-tag">#PowerMoves</div>
+    </div>
+    <div class="center">
+      <div class="kicker">Power Moves</div>
+      <h1>Every power move<br>starts before 9AM.</h1>
+      <div class="sub">Trained like an athlete. Dressed like it, everywhere else, too.</div>
+    </div>
+  </div>
+</body>
+</html>
