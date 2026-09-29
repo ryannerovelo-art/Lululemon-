@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>lululemon — Power Moves</title>
+<meta name="description" content="Every power move starts before 9AM. A lululemon campaign concept.">
+<style>
+  :root{
+    --black:#0b0b0c;
+    --white:#f7f5f2;
+    --red:#c8102e;
+    --gym:#1f4d4a;      /* cool teal — training */
+    --gym-2:#0e2b29;
+    --board:#8a3b12;    /* warm amber/rust — boardroom */
+    --board-2:#3d1a08;
+    --line: rgba(247,245,242,0.14);
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px;
+    background:linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 100%);
+  }
+  .logo{font-weight:800; letter-spacing:0.14em; font-size:13px; text-transform:uppercase;}
+  .navlinks{display:flex; gap:28px; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;}
+  .navlinks a{text-decoration:none; opacity:0.8;}
+  .navlinks a:hover{opacity:1;}
+
+  /* HERO */
+  .hero{
+    position:relative; height:100vh; min-height:640px;
+    display:flex;
+  }
+  .hero-half{
+    flex:1; position:relative; overflow:hidden;
+    display:flex; align-items:flex-end; padding:48px 40px;
+  }
+  .hero-half.left{
+    background: radial-gradient(120% 140% at 20% 10%, var(--gym) 0%, var(--gym-2) 55%, #060f0e 100%);
+  }
+  .hero-half.right{
+    background: radial-gradient(120% 140% at 80% 10%, var(--board) 0%, var(--board-2) 55%, #12070200 100%), #150902;
+  }
+  .hero-half .tag{
+    font-size:12px; letter-spacing:0.2em; text-transform:uppercase; opacity:0.75;
+  }
+  .hero-half .time{
+    font-size:clamp(48px, 8vw, 120px); font-weight:800; line-height:0.9; margin-top:10px;
+  }
+  .hero-figure{
+    position:absolute; inset:0; opacity:0.9; pointer-events:none;
+  }
+  /* abstract silhouette shapes standing in for photography */
+  .silhouette{
+    position:absolute; bottom:-4%; width:58%; aspect-ratio: 2/5;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%);
+    clip-path: polygon(38% 0%, 62% 0%, 68% 8%, 74% 22%, 70% 40%, 82% 55%, 78% 100%, 22% 100%, 18% 55%, 30% 40%, 26% 22%, 32% 8%);
+    filter: blur(0.3px);
+  }
+  .left .silhouette{ left:8%; background-color: rgba(0,0,0,0.35); background-blend-mode:multiply; }
+  .right .silhouette{ right:8%; background-color: rgba(0,0,0,0.4); background-blend-mode:multiply; }
+
+  .hero-center{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    z-index:5; text-align:center; width:min(90vw, 720px);
+  }
+  .hero-center .kicker{
+    font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:var(--red);
+    margin-bottom:18px; font-weight:700;
+  }
+  .hero-center h1{
+    font-size:clamp(28px, 4.4vw, 56px); font-weight:800; line-height:1.05; letter-spacing:-0.01em;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+  }
+  .hero-center .sub{
+    margin-top:18px; font-size:15px; opacity:0.85; letter-spacing:0.02em;
+  }
+  .scrollcue{
+    position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+    font-size:11px; letter-spacing:0.2em; text-transform:uppercase; opacity:0.6; z-index:5;
+  }
+
+  /* SECTION GENERIC */
+  section{padding:120px 0;}
+  .eyebrow{
+    font-size:12px; letter-spacing:0.25em; text-transform:uppercase; color:var(--red); font-weight:700; margin-bottom:20px;
+  }
+  h2{font-size:clamp(28px,4vw,44px); font-weight:800; letter-spacing:-0.01em; line-height:1.08;}
+  .lede{max-width:760px; font-size:clamp(18px,2vw,22px); line-height:1.5; opacity:0.85; margin-top:22px;}
+
+  /* MANIFESTO */
+  .manifesto{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:#101012;}
+  .manifesto p{
+    font-size:clamp(22px,3.2vw,38px); font-weight:600; line-height:1.35; letter-spacing:-0.01em; max-width:980px;
+  }
+  .manifesto p em{
+    color:var(--red); font-style:normal;
+  }
+
+  /* DIPTYCH GALLERY */
+  .diptych-row{
+    display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:16px;
+    border:1px solid var(--line);
+  }
+  .diptych{
+    position:relative; aspect-ratio: 4/5; overflow:hidden;
+    opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .diptych.show{opacity:1; transform:translateY(0);}
+  .diptych.gym{ background: linear-gradient(155deg, var(--gym) 0%, var(--gym-2) 70%, #060f0e 100%); }
+  .diptych.board{ background: linear-gradient(155deg, var(--board) 0%, var(--board-2) 70%, #150902 100%); }
+  .diptych .pose{
+    position:absolute; left:50%; bottom:-6%; transform:translateX(-50%);
+    width:46%; aspect-ratio:2/5;
+    background: rgba(0,0,0,0.4);
+    clip-path: polygon(38% 0%, 62% 0%, 68% 8%, 74% 22%, 70% 40%, 82% 55%, 78% 100%, 22% 100%, 18% 55%, 30% 40%, 26% 22%, 32% 8%);
+  }
+  .diptych .label{
+    position:absolute; top:18px; left:18px; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; opacity:0.85;
+    display:flex; align-items:center; gap:8px;
+  }
+  .diptych .label::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--white); display:inline-block;}
+  .diptych .cap{
+    position:absolute; bottom:16px; left:18px; right:18px; font-size:13px; opacity:0.75;
+  }
+  .row-caption{
+    text-align:center; margin-top:14px; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.6;
+  }
+
+  /* PILLARS */
+  .pillars{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin-top:56px;
+    border-top:1px solid var(--line);
+  }
+  .pillar{
+    padding:36px 26px; border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .pillar .num{font-size:13px; color:var(--red); font-weight:800; margin-bottom:16px;}
+  .pillar h3{font-size:17px; font-weight:700; margin-bottom:10px; line-height:1.3;}
+  .pillar p{font-size:14px; opacity:0.72; line-height:1.55;}
+
+  /* FILM STRIP */
+  .film{
+    background:linear-gradient(90deg, var(--gym-2) 0%, #0b0b0c 50%, var(--board-2) 100%);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .film-inner{
+    display:flex; align-items:center; justify-content:space-between; gap:60px; flex-wrap:wrap;
+  }
+  .play-btn{
+    width:88px; height:88px; border-radius:50%; border:1.5px solid var(--white);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    cursor:pointer; transition:background 0.25s ease, transform 0.25s ease;
+  }
+  .play-btn:hover{background:var(--white); transform:scale(1.05);}
+  .play-btn:hover svg path{fill:var(--black);}
+  .film-copy{max-width:560px;}
+  .film-copy .runtime{font-size:12px; letter-spacing:0.2em; text-transform:uppercase; opacity:0.6; margin-bottom:10px;}
+
+  /* COPY LINES MARQUEE */
+  .marquee-wrap{overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:26px 0; background:#000;}
+  .marquee{display:flex; gap:60px; white-space:nowrap; animation:scroll 32s linear infinite; width:max-content;}
+  .marquee span{font-size:20px; font-weight:700; opacity:0.9;}
+  .marquee span.accent{color:var(--red);}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* HASHTAG CTA */
+  .cta{
+    text-align:center;
+  }
+  .cta .tag{
+    font-size:clamp(30px,6vw,72px); font-weight:800; letter-spacing:-0.01em;
+  }
+  .cta .tag .red{color:var(--red);}
+  .btn{
+    display:inline-block; margin-top:34px; padding:16px 34px; border:1.5px solid var(--white);
+    font-size:12px; letter-spacing:0.2em; text-transform:uppercase; text-decoration:none; font-weight:700;
+    transition:background 0.25s ease, color 0.25s ease;
+  }
+  .btn:hover{background:var(--white); color:var(--black);}
+
+  footer{
+    padding:40px 0; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center; font-size:12px; opacity:0.6;
+    flex-wrap:wrap; gap:12px;
+  }
+
+  @media (max-width:860px){
+    .hero{flex-direction:column;}
+    .pillars{grid-template-columns:repeat(2,1fr);}
+    .diptych-row{grid-template-columns:1fr;}
+    .film-inner{flex-direction:column; align-items:flex-start; gap:32px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">lululemon</div>
+  <div class="navlinks">
+    <a href="#manifesto">Manifesto</a>
+    <a href="#rooms">One Person</a>
+    <a href="#film">Film</a>
+    <a href="#join">#PowerMoves</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-half left">
+    <div class="hero-figure"><div class="silhouette"></div></div>
+    <div>
+      <div class="tag">Training — 6:04 AM</div>
+      <div class="time">6AM</div>
+    </div>
+  </div>
+  <div class="hero-half right">
+    <div class="hero-figure"><div class="silhouette"></div></div>
+    <div style="margin-left:auto; text-align:right;">
+      <div class="tag">The Pitch — 9:00 AM</div>
+      <div class="time">9AM</div>
+    </div>
+  </div>
+  <div class="hero-center">
+    <div class="kicker">Power Moves</div>
+    <h1>Every power move starts before 9AM.</h1>
+    <div class="sub">Trained like an athlete. Dressed like it, everywhere else, too.</div>
+  </div>
+  <div class="scrollcue">Scroll ↓</div>
+</header>
+
+<section class="manifesto" id="manifesto">
+  <div class="wrap">
+    <div class="eyebrow">The Insight</div>
+    <p>
+      People don't clock out of ambition to work out, and they don't clock out of
+      discipline when they leave the gym. It's <em>the same person</em>, the same
+      intensity — just a different room. She's not the "wellness girl" in one hour
+      and the executive in the next. She's <em>one standard, all day</em>.
+    </p>
+  </div>
+</section>
+
+<section id="rooms">
+  <div class="wrap">
+    <div class="eyebrow">One Person, Two Rooms</div>
+    <h2>Same posture. Same fabric. Same person.</h2>
+    <p class="lede">The campaign's visual signature: identical framing, identical pose, two completely
+      different rooms. The joke was ever thinking these were two different people.</p>
+
+    <div class="diptych-row" data-group>
+      <div class="diptych gym"><div class="label">Studio · 6:12 AM</div><div class="pose"></div><div class="cap">Deadlift, third set.</div></div>
+      <div class="diptych board"><div class="label">HQ · 9:47 AM</div><div class="pose"></div><div class="cap">Closing the room.</div></div>
+    </div>
+    <div class="row-caption">Diptych 01 — "The Hold"</div>
+
+    <div class="diptych-row" data-group style="margin-top:56px;">
+      <div class="diptych gym"><div class="label">Track · 6:40 AM</div><div class="pose"></div><div class="cap">Full stride, lap four.</div></div>
+      <div class="diptych board"><div class="label">Client Site · 11:15 AM</div><div class="pose"></div><div class="cap">Walking into the room first.</div></div>
+    </div>
+    <div class="row-caption">Diptych 02 — "The Stride"</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Messaging Pillars</div>
+    <h2>What we say, and why we say it.</h2>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">01</div>
+        <h3>Same person, no wardrobe change.</h3>
+        <p>Product performs identically whether the "workout" is a workout, or a ten-hour day that started with one.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">02</div>
+        <h3>Discipline is discipline.</h3>
+        <p>The reps that build a lift also build a career. We say the quiet part out loud.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">03</div>
+        <h3>Retire the caricature.</h3>
+        <p>A direct, witty answer to "athleisure for people who aren't athletes" — confident, not defensive.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">04</div>
+        <h3>Built for movement you can't predict.</h3>
+        <p>Engineered for a body that goes from a deadlift to a redeye to a keynote in the same 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="film" id="film">
+  <div class="wrap film-inner">
+    <div class="play-btn" aria-label="Play hero film">
+      <svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#f7f5f2"/></svg>
+    </div>
+    <div class="film-copy">
+      <div class="runtime">Hero Film · :60</div>
+      <h2>"The Loop"</h2>
+      <p class="lede" style="margin-top:14px; font-size:16px;">
+        Three women, one unbroken beat. We follow each from a 6AM lift, through a commute,
+        into a boardroom, a client pitch, a hard conversation — then back to the gym floor
+        that night, in a loop. Same camera angle. Same framing. Same energy. The cut never
+        tells you which room matters more, because it doesn't.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>"This isn't loungewear. You don't lounge."</span>
+    <span class="accent">/</span>
+    <span>"Athleisure implies she's leisurely. She isn't."</span>
+    <span class="accent">/</span>
+    <span>"The gym was the warm-up."</span>
+    <span class="accent">/</span>
+    <span>"Same fabric. Same posture. Same person."</span>
+    <span class="accent">/</span>
+    <span>"This isn't loungewear. You don't lounge."</span>
+    <span class="accent">/</span>
+    <span>"Athleisure implies she's leisurely. She isn't."</span>
+    <span class="accent">/</span>
+    <span>"The gym was the warm-up."</span>
+    <span class="accent">/</span>
+    <span>"Same fabric. Same posture. Same person."</span>
+  </div>
+</div>
+
+<section class="cta" id="join">
+  <div class="wrap">
+    <div class="eyebrow">Join it</div>
+    <div class="tag">#Power<span class="red">Moves</span></div>
+    <p class="lede" style="margin:22px auto 0; text-align:center;">
+      Show us your transition. No outfit change required.
+    </p>
+    <a class="btn" href="#">Share your loop</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="width:100%; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <span>lululemon — Power Moves, campaign concept</span>
+    <span>See <code>/CAMPAIGN_BRIEF.md</code> and <code>/deck</code></span>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+  }, {threshold:0.2});
+  document.querySelectorAll('.diptych').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
