@@ -73,6 +73,11 @@ We stop showing product only in the studio. We follow the *same woman* from a 6a
 - **Casting:** Real professionals with real training regimens (not just fitness influencers) — surgeons, founders, litigators, athletes-turned-executives. Casting *is* the proof.
 - **Color/mood:** Keep lululemon's clean minimalism; introduce a warmer, richer palette shift for "boardroom" scenes vs. cool tones for "training" scenes, unified by identical composition — visual proof it's one story, two rooms.
 
+**This isn't hypothetical — the culture already exists, we just have to point at it:**
+- lululemon's own **"The Lab"** training events already cast real, visibly strong men and women training together as a community, not a solo influencer shoot. That's our casting brief, not a mood board.
+- Street style already put a **blazer over a sports bra with tailored joggers and heels** — the exact "boardroom + active" silhouette — on the street, unprompted. This becomes a literal hero look, not a metaphor.
+- Run clubs (5:30am, dark, city streets, a crowd of them) are already normal. We don't have to invent the "athlete who also works" — we have to stop cutting her out of the ad.
+
 ---
 
 ## 8. Executions

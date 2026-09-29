@@ -142,6 +142,17 @@
     text-align:center; margin-top:14px; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.6;
   }
 
+  /* PROOF POINTS */
+  .proof{border-top:1px solid var(--line); background:#101012;}
+  .proof-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:48px; border:1px solid var(--line);}
+  .proof-card{padding:34px 28px; border-right:1px solid var(--line);}
+  .proof-card:last-child{border-right:none;}
+  .proof-icon{width:44px; height:44px; margin-bottom:22px; opacity:0.9;}
+  .proof-card h3{font-size:16px; font-weight:700; margin-bottom:10px; letter-spacing:0.01em;}
+  .proof-card p{font-size:14px; opacity:0.7; line-height:1.6;}
+  .proof-card .src{display:block; margin-top:14px; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--red); opacity:0.85;}
+  @media (max-width:860px){ .proof-grid{grid-template-columns:1fr;} .proof-card{border-right:none; border-bottom:1px solid var(--line);} }
+
   /* PILLARS */
   .pillars{
     display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin-top:56px;
@@ -273,6 +284,34 @@
       <div class="diptych board"><div class="label">Client Site · 11:15 AM</div><div class="pose"></div><div class="cap">Walking into the room first.</div></div>
     </div>
     <div class="row-caption">Diptych 02 — "The Stride"</div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="wrap">
+    <div class="eyebrow">Not A Concept</div>
+    <h2>This culture already exists. We just have to point at it.</h2>
+    <p class="lede">Three proof points, no casting call required.</p>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <svg class="proof-icon" viewBox="0 0 44 44" fill="none"><circle cx="14" cy="12" r="5" stroke="#f7f5f2" stroke-width="1.5"/><circle cx="30" cy="12" r="5" stroke="#f7f5f2" stroke-width="1.5"/><path d="M6 34c0-6 4-10 8-10s8 4 8 10M22 34c0-6 4-10 8-10s8 4 8 10" stroke="#f7f5f2" stroke-width="1.5"/></svg>
+        <h3>The Lab already casts real strength.</h3>
+        <p>lululemon's own training events put visibly strong, diverse athletes on kettlebells, training as a community — not a solo influencer shoot. That's the casting brief, already shot.</p>
+        <span class="src">Source: lululemon "The Lab" event</span>
+      </div>
+      <div class="proof-card">
+        <svg class="proof-icon" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="8" r="2.5" stroke="#f7f5f2" stroke-width="1.5"/><path d="M22 10v4M22 14l-14 8v12M22 14l14 8v12" stroke="#f7f5f2" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 22h28" stroke="#f7f5f2" stroke-width="1.5"/></svg>
+        <h3>The blazer is already over the bra.</h3>
+        <p>Street style beat the brief to it: a tailored blazer over a sports bra, joggers, heels. Not a metaphor for "boardroom + active" — a literal hero look, already worn.</p>
+        <span class="src">Source: street style, unprompted</span>
+      </div>
+      <div class="proof-card">
+        <svg class="proof-icon" viewBox="0 0 44 44" fill="none"><path d="M6 30l7-9 6 5 8-12 11 16" stroke="#f7f5f2" stroke-width="1.5" fill="none"/><circle cx="34" cy="10" r="3" stroke="#f7f5f2" stroke-width="1.5"/></svg>
+        <h3>The 5:30AM run club is already full.</h3>
+        <p>Dark streets, a crowd, a city block of people who trained before anyone asked them to. We don't invent this person — we stop cutting her out of the ad.</p>
+        <span class="src">Source: urban run club, night</span>
+      </div>
+    </div>
   </div>
 </section>
 
